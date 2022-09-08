@@ -1,0 +1,15 @@
+server:
+  port: 8999
+
+spring:
+  application:
+    name: qrcode-payment-api
+  messages:
+    basename: config.i18n.messages
+
+  banner:
+    location: classpath:static/banner.txt
+  cloud:
+    loadbalancer:
+      ribbon:
+        enabled: false

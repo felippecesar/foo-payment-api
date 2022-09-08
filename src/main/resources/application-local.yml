@@ -1,0 +1,14 @@
+springdoc:
+  swagger-ui:
+    operationsSorter: method
+    path: /swagger-ui.html
+    api-docs:
+      enabled: true
+
+hystrix:
+  threadpool:
+    default:
+      coreSize: 30
+      maximumSize: 30
+      maxQueueSize: 150
+      queueSizeRejectionThreshold: 150

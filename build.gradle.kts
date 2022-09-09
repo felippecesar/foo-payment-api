@@ -3,7 +3,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
 	id("org.springframework.boot") version "2.7.3"
 	id("io.spring.dependency-management") version "1.0.13.RELEASE"
-	id("org.jmailen.kotlinter") version "2.4.1"
+//	id("org.jmailen.kotlinter") version "3.11.1" apply false
 	id("eclipse")
 	id("idea")
 	id("java")
@@ -12,6 +12,7 @@ plugins {
 	kotlin("plugin.spring") version "1.6.21"
 	kotlin("plugin.jpa") version "1.6.21"
 }
+
 
 group = "com.cesarsol"
 version = "0.0.1-SNAPSHOT"
@@ -54,22 +55,24 @@ dependencyManagement {
 	}
 }
 
-kotlinter {
-	ignoreFailures = false
-	indentSize = 4
-	reporters = arrayOf("checkstyle", "plain")
-	experimentalRules = false
-	disabledRules = emptyArray()
-	fileBatchSize = 30
-}
+//kotlinter {
+//	ignoreFailures = false
+//	indentSize = 4
+//	reporters = arrayOf("checkstyle", "plain")
+//	experimentalRules = false
+//	disabledRules = emptyArray()
+//	fileBatchSize = 30
+//}
 
 tasks.withType<KotlinCompile> {
 	kotlinOptions {
 		freeCompilerArgs = listOf("-Xjsr305=strict")
 		jvmTarget = "11"
 	}
+//	dependsOn("formatKotlin")
 }
 
 tasks.withType<Test> {
 	useJUnitPlatform()
+//	dependsOn("formatKotlin")
 }

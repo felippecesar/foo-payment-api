@@ -3,4 +3,21 @@ services:
   foo-payment-api:
     build: ../
     ports:
-      - "8080:8999"
+      - 8080:8999
+  foo-database:
+    image: postgres:14.1
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=foo-user-app
+      - POSTGRES_PASSWORD=f00-P@ss
+      - POSTGRES_DB=foo-db
+  flyway:
+    image: flyway/flyway:9.2.3
+    command: -configFiles=/flyway/conf/flyway.config -locations=filesystem:/flyway/sql -connectRetries=60 migrate
+    volumes:
+      - classpath:/db/migration:/flyway/sql
+      - ./database/flyway.config:/flyway/conf/flyway.config
+    depends_on:
+      - foo-database

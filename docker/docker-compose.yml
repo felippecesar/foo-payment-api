@@ -17,7 +17,7 @@ services:
     image: flyway/flyway:9.2.3
     command: -configFiles=/flyway/conf/flyway.config -locations=filesystem:/flyway/sql -connectRetries=60 migrate
     volumes:
-      - classpath:/db/migration:/flyway/sql
+      - ./database/migration:/flyway/sql
       - ./database/flyway.config:/flyway/conf/flyway.config
     depends_on:
       - foo-database

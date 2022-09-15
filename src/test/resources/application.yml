@@ -1,0 +1,63 @@
+spring:
+  application:
+    name: qrcode-orchestrator
+  flyway:
+    enabled: false
+    open-in-view: false
+  main:
+    allow-bean-definition-overriding: true
+  datasource:
+    url: jdbc:h2:mem:qrcode_orchestrator_db
+    driverClassName: org.h2.Driver
+    username: root
+    password: secret
+    maximum-pool-size: 4
+  redis:
+    host: localhost
+    port: 6380
+    embedded: true
+    ttl: 259200
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    database: h2
+    properties:
+      hibernate:
+        ddl-auto: create
+        show-sql: true
+        format_sql: true
+        id:
+          new_generator_mappings: false
+        hbm2ddl:
+          auto: create-drop
+        naming:
+          physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+          implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl
+        jdbc:
+          temp:
+            use_jdbc_metadata_defaults: false
+  sleuth:
+    reactor:
+      enabled: false
+
+#feign:
+#  httpclient:
+#    enabled: true
+#  client:
+#    config:
+#      default:
+#        loggerLevel: FULL
+#  hystrix:
+#    enabled: true
+#
+#
+#hystrix:
+#  command:
+#    default:
+#      execution:
+#        isolation:
+#          thread:
+#            timeoutInMilliseconds: 10000
+#      circuitBreaker:
+#        requestVolumeThreshold: 25
+#        sleepWindowInMilliseconds: 7000
+#        errorThresholdPercentage: 50

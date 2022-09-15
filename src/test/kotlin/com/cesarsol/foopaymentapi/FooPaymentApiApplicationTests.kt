@@ -1,9 +1,17 @@
 package com.cesarsol.foopaymentapi
 
 import org.junit.jupiter.api.Test
+import org.springframework.boot.autoconfigure.domain.EntityScan
 import org.springframework.boot.test.context.SpringBootTest
+import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker
+import org.springframework.context.annotation.Configuration
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories
+import org.springframework.transaction.annotation.EnableTransactionManagement
 
-@SpringBootTest
+@Configuration
+@EnableTransactionManagement
+@EnableJpaRepositories("com.cesarsol.foopaymentapi.domain.database")
+@EntityScan("com.cesarsol.foopaymentapi.domain.database.entity")
 class FooPaymentApiApplicationTests {
 
 	@Test

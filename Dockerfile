@@ -7,4 +7,4 @@ RUN addgroup -S appuser && adduser -S appuser -G appuser
 USER appuser:appuser
 
 EXPOSE 8999
-CMD [ "java", "-jar", "foo-payment-api.jar" ]
+ENTRYPOINT [ "java", "-jar", "foo-payment-api.jar" ]

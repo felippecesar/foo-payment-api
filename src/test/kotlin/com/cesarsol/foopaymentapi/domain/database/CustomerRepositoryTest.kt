@@ -27,11 +27,8 @@ class CustomerRepositoryTest {
     @Test
     fun shouldFindById() {
         var customerEntity = customerEntity()
-
         customerEntity = customerRepository.save(customerEntity)
-
         val found = customerRepository.findById(customerEntity.id!!).get()
-
         Assertions.assertEquals(customerEntity, found)
     }
 }

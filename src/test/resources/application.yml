@@ -1,6 +1,6 @@
 spring:
   application:
-    name: qrcode-orchestrator
+    name: foo-payment-api
   flyway:
     enabled: false
     open-in-view: false

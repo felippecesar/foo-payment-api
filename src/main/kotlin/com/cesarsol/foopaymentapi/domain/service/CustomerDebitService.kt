@@ -13,4 +13,9 @@ class CustomerDebitService(val repository: CustomerDebitRepository) {
 
     fun findUnpaidByCustomerId(customerId: Long) = repository.findByCustomerIdAndStatus(customerId, DebitStatus.UNPAID)
 
+    fun findUnpaid(customerId: Long, creditorDocument: String? = null): List<CustomerDebitEntity> {
+        return if (creditorDocument.isNullOrBlank())
+            repository.findByCustomerIdAndStatus(customerId, DebitStatus.UNPAID)
+        else  repository.findByCustomerIdAndCreditorDocumentAndStatusOrderByCreditorDocument(customerId, creditorDocument, DebitStatus.UNPAID)
+    }
 }

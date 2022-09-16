@@ -8,7 +8,9 @@ import org.springframework.stereotype.Repository
 @Repository
 interface CustomerDebitRepository : JpaRepository<CustomerDebitEntity, Long> {
 
-    fun findByCustomerId(id: Long) : List<CustomerDebitEntity?>
+    fun findByCustomerId(id: Long) : List<CustomerDebitEntity>
 
-    fun findByCustomerIdAndStatus(id: Long, status: DebitStatus) : List<CustomerDebitEntity?>
+    fun findByCustomerIdAndStatus(id: Long, status: DebitStatus) : List<CustomerDebitEntity>
+
+    fun findByCustomerIdAndCreditorDocumentAndStatusOrderByCreditorDocument(id: Long, creditorDocument: String, status: DebitStatus) : List<CustomerDebitEntity>
 }

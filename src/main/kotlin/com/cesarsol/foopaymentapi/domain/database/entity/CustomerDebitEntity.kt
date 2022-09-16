@@ -47,7 +47,7 @@ data class CustomerDebitEntity(
     @Column(name = "DES_STATUS")
     @Enumerated(EnumType.STRING)
     var status: DebitStatus = DebitStatus.UNPAID,
-    @Column(name = "DAT_CREATED")
+    @Column(name = "DAT_CREATION")
     var createdAt: LocalDateTime = LocalDateTime.now(),
     @Column(name = "DAT_UPDATE")
     var updatedAt: LocalDateTime? = null

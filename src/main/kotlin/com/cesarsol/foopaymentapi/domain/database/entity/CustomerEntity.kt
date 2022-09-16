@@ -23,7 +23,7 @@ data class CustomerEntity(
     var name: String,
     @Column(name = "COD_DOCUMENT")
     var document: String,
-    @Column(name = "DES_PRIORITY_WAY")
+    @Column(name = "DES_PRIORITY_NOTIF_WAY")
     @Enumerated(EnumType.STRING)
     var priorityNotificationWay: NotificationWay,
     @Column(name = "NAM_MAIL")
@@ -34,7 +34,7 @@ data class CustomerEntity(
     var address: String? = null,
     @Column(name = "NUM_PROFILE_SCORE")
     var profileScore: Int,
-    @Column(name = "DAT_CREATED")
+    @Column(name = "DAT_CREATION")
     var createdAt: LocalDateTime = LocalDateTime.now()
 
 ) : Serializable

@@ -13,4 +13,6 @@ interface CustomerDebitRepository : JpaRepository<CustomerDebitEntity, Long> {
     fun findByCustomerIdAndStatus(id: Long, status: DebitStatus) : List<CustomerDebitEntity>
 
     fun findByCustomerIdAndCreditorDocumentAndStatusOrderByCreditorDocument(id: Long, creditorDocument: String, status: DebitStatus) : List<CustomerDebitEntity>
+
+    fun countByCustomerIdAndStatus(id: Long, status: DebitStatus): Int
 }

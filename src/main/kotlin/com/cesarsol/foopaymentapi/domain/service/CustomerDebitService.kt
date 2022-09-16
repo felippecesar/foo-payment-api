@@ -18,4 +18,6 @@ class CustomerDebitService(val repository: CustomerDebitRepository) {
             repository.findByCustomerIdAndStatus(customerId, DebitStatus.UNPAID)
         else  repository.findByCustomerIdAndCreditorDocumentAndStatusOrderByCreditorDocument(customerId, creditorDocument, DebitStatus.UNPAID)
     }
+
+    fun countUnpaid(customerId: Long) = repository.countByCustomerIdAndStatus(customerId, DebitStatus.UNPAID)
 }

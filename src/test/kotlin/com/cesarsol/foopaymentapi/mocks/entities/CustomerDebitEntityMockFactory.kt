@@ -16,7 +16,7 @@ object CustomerDebitEntityMockFactory {
     fun customerDebitEntity(
         customer: CustomerEntity = customerEntity(),
         amount: BigDecimal = BigDecimal.TEN,
-        monthlyTax: BigDecimal? = BigDecimal(1.23),
+        monthlyTax: Double? = 1.23,
         dueDate: LocalDate? = null,
         maxOverdueDays: String? = null,
         lastNotificationDate: LocalDate? = null,

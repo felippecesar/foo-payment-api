@@ -5,6 +5,9 @@ spring:
     password: f00-P@ss
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQL9Dialect
+  redis:
+    host: localhost
+    port: 6379
 
 springdoc:
   swagger-ui:
@@ -20,3 +23,7 @@ hystrix:
       maximumSize: 30
       maxQueueSize: 150
       queueSizeRejectionThreshold: 150
+
+integration:
+  product-sale-service:
+    url: http://localhost:8090/product-sales

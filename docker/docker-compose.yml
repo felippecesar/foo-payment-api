@@ -1,12 +1,12 @@
 version: "3.9"
 services:
-  foo-payment-api:
-    environment:
-      - "SPRING_PROFILES_ACTIVE=docker"
-    build: ../
-    ports:
-      - 8080:8999
-    restart: always
+#  foo-payment-api:
+#    environment:
+#      - "SPRING_PROFILES_ACTIVE=docker"
+#    build: ../
+#    ports:
+#      - 8080:8999
+#    restart: always
   foo-database:
     image: postgres:14.1
     restart: always
@@ -24,3 +24,8 @@ services:
       - ./database/flyway.config:/flyway/conf/flyway.config
     depends_on:
       - foo-database
+  redis-cluster:
+    image: redis:7.0.4
+    restart: always
+    ports:
+      - 6379:6379

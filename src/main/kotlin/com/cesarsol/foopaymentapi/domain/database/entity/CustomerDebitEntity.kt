@@ -33,10 +33,10 @@ data class CustomerDebitEntity(
     @Column(name = "NUM_AMOUNT")
     var amount: BigDecimal,
     @Column(name = "NUM_MONTHLY_TAX")
-    var monthlyTax: BigDecimal? = null,
+    var monthlyTax: Double? = null,
     @Column(name = "DAT_DUE_DATE")
     var dueDate: LocalDate? = null,
-    @Column(name = "NUM_OVERDUE_DAYS")
+    @Column(name = "NUM_MAX_OVERDUE_DAYS")
     var maxOverdueDays: String? = null,
     @Column(name = "DAT_LAST_NOTIFICATION_DATE")
     var lastNotificationDate: LocalDate? = null,

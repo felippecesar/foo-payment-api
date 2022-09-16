@@ -2,7 +2,6 @@ package com.cesarsol.foopaymentapi.integration.incomming
 
 import com.cesarsol.foopaymentapi.business.CustomerDebitsAnalysisFlow
 import com.cesarsol.foopaymentapi.business.context.CustomerDebitsListContext
-import com.cesarsol.foopaymentapi.domain.service.CustomerDebitService
 import com.cesarsol.foopaymentapi.integration.incomming.response.CustomerDebitsResponse
 import com.cesarsol.foopaymentapi.integration.incomming.response.OffersResponse
 import io.swagger.v3.oas.annotations.Operation
@@ -23,19 +22,34 @@ class DebitsResource(val customerDebitsAnalysisFlow: CustomerDebitsAnalysisFlow)
 
     private val log: KLogger = KotlinLogging.logger { }
 
-    @GetMapping("/customer/{customerId}/{creditorId}")
+    @GetMapping("/customer/{customerId}")
     @Operation(
         summary = "[FooPaymentApi] get all debits",
         description = "Get all debits by customer or/and customer + creditor",
         method = "GET"
     )
     fun getAll(
+        @PathVariable customerId: Long
+    ): ResponseEntity<CustomerDebitsResponse> {
+        log.info { "m=getAll, customerId=$customerId" }
+        return ResponseEntity.ok(
+            customerDebitsAnalysisFlow.executeFlow(CustomerDebitsListContext(customerId, creditorDocument = null)).response!!
+        )
+    }
+
+    @GetMapping("/customer/{customerId}/{creditorId}")
+    @Operation(
+        summary = "[FooPaymentApi] get all debits",
+        description = "Get all debits by customer or/and customer + creditor",
+        method = "GET"
+    )
+    fun getByCreditor(
         @PathVariable customerId: Long,
-        @PathVariable(required = false) creditorId: String? = null
+        @PathVariable creditorId: String
     ): ResponseEntity<CustomerDebitsResponse> {
         log.info { "m=getAll, customerId=$customerId, creditorId=$creditorId" }
         return ResponseEntity.ok(
-            customerDebitsAnalysisFlow.executeFlow(CustomerDebitsListContext(customerId, creditorDocument = null)).response!!
+            customerDebitsAnalysisFlow.executeFlow(CustomerDebitsListContext(customerId, creditorDocument = creditorId)).response!!
         )
     }
 
@@ -54,27 +68,6 @@ class DebitsResource(val customerDebitsAnalysisFlow: CustomerDebitsAnalysisFlow)
     ): ResponseEntity<OffersResponse?> {
 
         log.info { "m=group, debitorId=$debitorId, creditorId=$creditorId" }
-
-        return ResponseEntity.ok(
-            null
-        )
-    }
-
-    @GetMapping("/offers/{debitorId}/{creditorId}")
-    @Operation(
-        summary = "[FooPaymentApi] negotiate offers",
-        description = "Get possible negotiation offers and payment simulations",
-        method = "GET"
-    )
-    @Parameters(
-        Parameter(name = "TEST_HEADER", `in` = ParameterIn.HEADER, required = false)
-    )
-    fun offers(
-        @PathVariable debitorId: String,
-        @PathVariable creditorId: String? = null
-    ): ResponseEntity<OffersResponse?> {
-
-        log.info { "m=offers, debitorId=$debitorId" }
 
         return ResponseEntity.ok(
             null

@@ -16,7 +16,6 @@ spring:
     host: localhost
     port: 6380
     embedded: true
-    ttl: 259200
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
     database: h2
@@ -61,3 +60,7 @@ spring:
 #        requestVolumeThreshold: 25
 #        sleepWindowInMilliseconds: 7000
 #        errorThresholdPercentage: 50
+
+integration:
+  product-sale-service:
+    url: http://localhost:${wiremock.server.port}

@@ -3,6 +3,8 @@ package com.cesarsol.foopaymentapi.business.context
 import com.cesarsol.foopaymentapi.domain.database.entity.CustomerDebitEntity
 import com.cesarsol.foopaymentapi.domain.enums.MetricName
 import com.cesarsol.foopaymentapi.integration.incomming.response.CustomerDebitsResponse
+import com.cesarsol.foopaymentapi.integration.outcoming.productsalesservice.ProductOfferResponse
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder
 
 data class CustomerDebitsListContext(
     val customerId: Long,
@@ -10,6 +12,7 @@ data class CustomerDebitsListContext(
 ) : Metrifiable {
 
     var customerDebits: List<CustomerDebitEntity>? = null
+    var productList: List<ProductOfferResponse>? = null
     var response: CustomerDebitsResponse? = null
 
     override fun metricName(success: Boolean): String {
@@ -23,5 +26,10 @@ data class CustomerDebitsListContext(
             "CDEBS_ERROR" to exception?.toString()
         )
     }
+
+    override fun toString(): String {
+        return ReflectionToStringBuilder.toString(this)
+    }
+
 
 }

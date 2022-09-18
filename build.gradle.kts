@@ -3,10 +3,11 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
 	id("org.springframework.boot") version "2.7.3"
 	id("io.spring.dependency-management") version "1.0.13.RELEASE"
-//	id("org.jmailen.kotlinter") version "3.11.1" apply false
+	id("com.adarshr.test-logger") version "2.1.0"
 	id("eclipse")
 	id("idea")
 	id("java")
+	id("jacoco")
 
 	kotlin("jvm") version "1.6.21"
 	kotlin("plugin.spring") version "1.6.21"

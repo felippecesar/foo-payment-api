@@ -41,21 +41,7 @@ feign:
     config:
       default:
         loggerLevel: FULL
-  hystrix:
-    enabled: true
-#
-#
-#hystrix:
-#  command:
-#    default:
-#      execution:
-#        isolation:
-#          thread:
-#            timeoutInMilliseconds: 10000
-#      circuitBreaker:
-#        requestVolumeThreshold: 25
-#        sleepWindowInMilliseconds: 7000
-#        errorThresholdPercentage: 50
+
 
 integration:
   product-sale-service:

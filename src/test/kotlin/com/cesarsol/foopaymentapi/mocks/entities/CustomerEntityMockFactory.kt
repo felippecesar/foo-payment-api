@@ -12,7 +12,7 @@ object CustomerEntityMockFactory {
         email: String? = null,
         phone: String? = null,
         address: String? = null,
-        profileScore: Int = 500
+        profileScore: Int = 200
     ) = CustomerEntity(
         name = name,
         document = document,

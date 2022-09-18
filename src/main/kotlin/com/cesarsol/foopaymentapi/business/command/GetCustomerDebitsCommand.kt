@@ -17,7 +17,7 @@ class GetCustomerDebitsCommand(private val customerDebitService: CustomerDebitSe
         log.info { "m=execute, step=BEGIN, context=$context" }
         context.customerDebits = customerDebitService.findUnpaid(context.customerId, context.creditorDocument)
         if (context.customerDebits.isNullOrEmpty()){
-            throw BusinessException(BusinessError.DEFAULT_ERROR)
+            throw BusinessException(BusinessError.NO_DEBITS_FOR_CREDITOR)
         }
         log.info { "m=execute, step=END, debitsFound=${context.customerDebits?.size} context=$context" }
         return context

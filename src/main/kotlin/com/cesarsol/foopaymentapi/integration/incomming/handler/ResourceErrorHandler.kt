@@ -1,6 +1,7 @@
 package com.cesarsol.foopaymentapi.integration.incomming.handler
 
 import com.cesarsol.foopaymentapi.domain.exception.BusinessError
+import com.cesarsol.foopaymentapi.domain.exception.BusinessException
 import com.cesarsol.foopaymentapi.integration.incomming.response.ErrorResponse
 import mu.KLogger
 import mu.KotlinLogging
@@ -23,5 +24,15 @@ class ResourceErrorHandler {
     ): ErrorResponse {
         log.error(exception) { "m=handleGeneralException, error=${exception.message}" }
         return ErrorResponse(BusinessError.DEFAULT_ERROR)
+    }
+
+    @ExceptionHandler(BusinessException::class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    fun handleBusinessException(
+        exception: BusinessException,
+        httpRequest: HttpServletRequest
+    ): ErrorResponse {
+        log.error(exception) { "m=handleGeneralException, error=${exception.message}" }
+        return ErrorResponse(exception.businessError)
     }
 }

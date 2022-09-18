@@ -17,12 +17,10 @@ class ProductSalesGetCommand(
     override fun execute(context: CustomerDebitsListContext): CustomerDebitsListContext {
         log.info { "m=execute, step=BEGIN, context=$context" }
         context.productList = try {
-            if (!context.customerDebits.isNullOrEmpty()) {
-                productSalesServiceClient.getProducts(
-                    context.customerId,
-                    context.customerDebits!!.first().customer.profileScore
-                )
-            } else emptyList()
+            productSalesServiceClient.getProducts(
+                context.customerId,
+                context.customerDebits!!.first().customer.profileScore
+            )
         } catch (e: Exception){
             log.error(e) { "m=execute, step=ERROR, context=$context" }
             emptyList()

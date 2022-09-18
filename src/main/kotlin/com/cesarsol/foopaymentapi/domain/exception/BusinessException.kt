@@ -3,7 +3,7 @@ package com.cesarsol.foopaymentapi.domain.exception
 import java.lang.Exception
 
 class BusinessException(
-    private val businessError: BusinessError,
+    val businessError: BusinessError,
     override val message: String? = businessError.message,
     exception: Exception?
 ) : RuntimeException(businessError.name, exception) {

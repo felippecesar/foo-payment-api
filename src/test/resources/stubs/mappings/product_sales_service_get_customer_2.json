@@ -1,0 +1,24 @@
+{
+  "request": {
+    "method": "GET",
+    "urlPathPattern": "/product-sales/offers/2/debit/600"
+  },
+  "response": {
+    "status": 200,
+    "jsonBody": [
+      {
+        "product_name": "Cartao de credito",
+        "amount_percent_reduction": "0.30",
+        "max_amount_reduction": "3000"
+      },
+      {
+        "product_name": "seguro residencial",
+        "amount_percent_reduction": "0.15",
+        "max_amount_reduction": "6000"
+      }
+    ],
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}

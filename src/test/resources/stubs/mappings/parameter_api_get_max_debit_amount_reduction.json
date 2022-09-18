@@ -1,0 +1,16 @@
+{
+  "request": {
+    "method": "GET",
+    "urlPathPattern": "/parameter-api/parameter/MAX_DEBIT_AMOUNT_REDUCTION"
+  },
+  "response": {
+    "status": 200,
+    "jsonBody": {
+      "parameter": "MAX_DEBIT_AMOUNT_REDUCTION",
+      "value": "0.3"
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}

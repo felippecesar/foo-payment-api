@@ -1,13 +1,14 @@
 version: "3.9"
 services:
-#  foo-payment-api:
-#    environment:
-#      - "SPRING_PROFILES_ACTIVE=docker"
-#    build: ../
-#    ports:
-#      - 8080:8999
-#    restart: always
+  foo-payment-api:
+    container_name: foo-payment-api
+    environment:
+      - "SPRING_PROFILES_ACTIVE=docker"
+    build: ../
+    ports:
+      - 8999:8999
   foo-database:
+    container_name: foo-database
     image: postgres:14.1
     restart: always
     ports:
@@ -17,15 +18,28 @@ services:
       - POSTGRES_PASSWORD=f00-P@ss
       - POSTGRES_DB=foo-db
   flyway:
+    container_name: foo-flyway
     image: flyway/flyway:9.2.3
     command: -configFiles=/flyway/conf/flyway.config -locations=filesystem:/flyway/sql -connectRetries=60 migrate
     volumes:
-      - ./database/migration:/flyway/sql
+      - ../src/main/resources/db/migrations:/flyway/sql
       - ./database/flyway.config:/flyway/conf/flyway.config
     depends_on:
       - foo-database
-  redis-cluster:
-    image: redis:7.0.4
-    restart: always
+
+  foo-wiremock:
+    container_name: foo-wiremock
+    image: wiremock/wiremock:2.34.0
+    command: --verbose
+    volumes:
+      - ../src/test/resources/stubs:/home/wiremock
     ports:
-      - 6379:6379
+      - 8090:8080
+#  redis:
+#    image: redis:7.0.4
+#    restart: always
+#    command: /home/redis/redis.conf
+#    volumes:
+#      - ./redis:/home/redis
+#    ports:
+#      - 6379:6379

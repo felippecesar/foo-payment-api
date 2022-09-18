@@ -1,0 +1,16 @@
+{
+  "request": {
+    "method": "GET",
+    "urlPathPattern": "/parameter-api/parameter/DEFAULT_DEBIT_MONTHLY_TAX"
+  },
+  "response": {
+    "status": 200,
+    "jsonBody": {
+      "parameter": "DEFAULT_DEBIT_MONTHLY_TAX",
+      "value": "3.89"
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}

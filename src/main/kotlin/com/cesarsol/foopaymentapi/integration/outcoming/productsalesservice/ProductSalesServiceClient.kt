@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable
 )
 interface ProductSalesServiceClient {
 
-    @GetMapping("/offer/{customerId}/debit/{profileScore}")
+    @GetMapping("/offers/{customerId}/debit/{profileScore}")
     fun getProducts(
         @PathVariable customerId: Long,
         @PathVariable profileScore: Int,

@@ -10,6 +10,18 @@ spring:
     enabled: false
     open-in-view: false
 
+logging:
+  level:
+    com:
+      cesarsol:
+        foopaymentapi: DEBUG
+
+feign:
+  client:
+    config:
+      default:
+        loggerLevel: FULL
+
   banner:
     location: classpath:static/banner.txt
   cloud:

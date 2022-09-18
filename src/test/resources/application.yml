@@ -12,10 +12,6 @@ spring:
     username: root
     password: secret
     maximum-pool-size: 4
-  redis:
-    host: localhost
-    port: 6380
-    embedded: true
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
     database: h2
@@ -38,15 +34,15 @@ spring:
     reactor:
       enabled: false
 
-#feign:
-#  httpclient:
-#    enabled: true
-#  client:
-#    config:
-#      default:
-#        loggerLevel: FULL
-#  hystrix:
-#    enabled: true
+feign:
+  httpclient:
+    enabled: true
+  client:
+    config:
+      default:
+        loggerLevel: FULL
+  hystrix:
+    enabled: true
 #
 #
 #hystrix:
@@ -63,4 +59,6 @@ spring:
 
 integration:
   product-sale-service:
-    url: http://localhost:${wiremock.server.port}
+    url: http://localhost:${wiremock.server.port}/product-sales
+  parameter-api:
+    url: http://localhost:${wiremock.server.port}/parameter-api

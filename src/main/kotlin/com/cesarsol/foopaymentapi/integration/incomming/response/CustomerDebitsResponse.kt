@@ -20,8 +20,8 @@ data class CustomerDebitsResponse (
     val minYearlyTax: Double,
     val proposedMonthlyTax:Double,
     val proposedYearlyTax:Double,
-    val debits: List<CustomerDebit>,
-    val proposals: List<Proposal>
+    val proposals: List<Proposal>,
+    val debits: List<CustomerDebit>
 )
 
 

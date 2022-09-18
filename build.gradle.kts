@@ -27,7 +27,6 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-actuator")
 	implementation("org.springframework.boot:spring-boot-starter-data-jdbc")
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-	implementation("org.springframework.data:spring-data-redis")
 	implementation("org.springframework.boot:spring-boot-starter-security")
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
@@ -38,7 +37,6 @@ dependencies {
 	implementation("org.springframework.cloud:spring-cloud-starter-sleuth")
 	implementation("org.springdoc:springdoc-openapi-ui:${property("openApiVersion")}")
 	implementation("io.github.microutils:kotlin-logging:${property("kotlinLoggingVersion")}")
-	implementation("redis.clients:jedis:${property("jedisVersion")}")
 
 	runtimeOnly("org.postgresql:postgresql")
 	runtimeOnly("com.h2database:h2:${property("h2Version")}")
@@ -50,7 +48,6 @@ dependencies {
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("org.springframework.security:spring-security-test")
 	testRuntimeOnly("com.h2database:h2:${property("h2Version")}")
-	testImplementation ("it.ozimov:embedded-redis:${property("embeddedRedisVersion")}")
 }
 
 dependencyManagement {

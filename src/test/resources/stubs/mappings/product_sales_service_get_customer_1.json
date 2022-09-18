@@ -1,0 +1,24 @@
+{
+  "request": {
+    "method": "GET",
+    "urlPathPattern": "/product-sales/offers/1/debit/200"
+  },
+  "response": {
+    "status": 200,
+    "jsonBody": [
+      {
+        "product_name": "Cartao de credito",
+        "amount_percent_reduction": "0.15",
+        "max_amount_reduction": "1500"
+      },
+      {
+        "product_name": "titulo de capitalizacao",
+        "amount_percent_reduction": "0.20",
+        "max_amount_reduction": "2000"
+      }
+    ],
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}

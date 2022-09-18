@@ -1,0 +1,29 @@
+{
+  "request": {
+    "method": "GET",
+    "urlPathPattern": "/product-sales/offers/3/debit/200"
+  },
+  "response": {
+    "status": 200,
+    "jsonBody": [
+      {
+        "product_name": "seguro carro",
+        "amount_percent_reduction": "0.15",
+        "max_amount_reduction": "3000"
+      },
+      {
+        "product_name": "previdencia privada",
+        "amount_percent_reduction": "0.25",
+        "max_amount_reduction": "6000"
+      },
+      {
+        "product_name": "cartao de credito",
+        "amount_percent_reduction": "0.30",
+        "max_amount_reduction": "6000"
+      }
+    ],
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}

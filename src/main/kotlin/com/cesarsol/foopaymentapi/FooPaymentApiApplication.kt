@@ -1,5 +1,6 @@
 package com.cesarsol.foopaymentapi
 
+import com.cesarsol.foopaymentapi.integration.outcoming.parameterapi.ParameterApiClient
 import com.cesarsol.foopaymentapi.integration.outcoming.productsalesservice.ProductSalesServiceClient
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.autoconfigure.domain.EntityScan
@@ -13,7 +14,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement
 @EnableJpaRepositories("com.cesarsol.foopaymentapi.domain.database")
 @EntityScan("com.cesarsol.foopaymentapi.domain.database.entity")
 @EnableFeignClients(
-	clients = [ProductSalesServiceClient::class]
+	clients = [ProductSalesServiceClient::class, ParameterApiClient::class]
 )
 class FooPaymentApiApplication
 

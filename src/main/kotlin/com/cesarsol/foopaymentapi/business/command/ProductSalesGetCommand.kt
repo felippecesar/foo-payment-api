@@ -27,6 +27,7 @@ class ProductSalesGetCommand(
             log.error(e) { "m=execute, step=ERROR, context=$context" }
             emptyList()
         }
+        log.info { "m=execute, step=SUCCESS, response=${context.productList}"}
         return context
     }
 

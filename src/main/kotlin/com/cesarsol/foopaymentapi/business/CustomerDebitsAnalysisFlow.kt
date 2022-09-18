@@ -19,11 +19,17 @@ class CustomerDebitsAnalysisFlow(
 
     override fun executeFlow(context: CustomerDebitsListContext): CustomerDebitsListContext {
         log.info { "m=executeFlow, step=BEGIN context=$context" }
-        //TODO TRY CATCH
-        getCustomerDebitsCommand.execute(context)
-        productSalesGetCommand.execute(context)
-        proposalGeneratorCommand.execute(context)
-        //TODO METRICS
+        try {
+            getCustomerDebitsCommand.execute(context)
+            productSalesGetCommand.execute(context)
+            proposalGeneratorCommand.execute(context)
+            //TODO METRICS SUCCESS
+            log.info { "m=executeFlow, step=SUCCESS context=$context" }
+        } catch (e: Exception){
+            log.error(e) { "m=executeFlow, step=ERROR context=$context" }
+            //TODO METRICS ERROR
+            throw e
+        }
         return context
     }
 }

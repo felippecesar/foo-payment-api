@@ -53,25 +53,4 @@ class DebitsResource(val customerDebitsAnalysisFlow: CustomerDebitsAnalysisFlow)
         )
     }
 
-    @GetMapping("/group/{debitorId}/{creditorId}") //TODO recebe uma lista de dívidas
-    @Operation(
-        summary = "[FooPaymentApi] negotiate offers",
-        description = "Get possible negotiation offers and payment simulations",
-        method = "GET"
-    )
-    @Parameters(
-        Parameter(name = "TEST_HEADER", `in` = ParameterIn.HEADER, required = false)
-    )
-    fun group(
-        @PathVariable debitorId: String,
-        @PathVariable creditorId: String? = null
-    ): ResponseEntity<OffersResponse?> {
-
-        log.info { "m=group, debitorId=$debitorId, creditorId=$creditorId" }
-
-        return ResponseEntity.ok(
-            null
-        )
-    }
-
 }

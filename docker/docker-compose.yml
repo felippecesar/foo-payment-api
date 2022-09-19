@@ -35,11 +35,3 @@ services:
       - ../src/test/resources/stubs:/home/wiremock
     ports:
       - 8090:8080
-#  redis:
-#    image: redis:7.0.4
-#    restart: always
-#    command: /home/redis/redis.conf
-#    volumes:
-#      - ./redis:/home/redis
-#    ports:
-#      - 6379:6379

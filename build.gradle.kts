@@ -57,24 +57,14 @@ dependencyManagement {
 	}
 }
 
-//kotlinter {
-//	ignoreFailures = false
-//	indentSize = 4
-//	reporters = arrayOf("checkstyle", "plain")
-//	experimentalRules = false
-//	disabledRules = emptyArray()
-//	fileBatchSize = 30
-//}
 
 tasks.withType<KotlinCompile> {
 	kotlinOptions {
 		freeCompilerArgs = listOf("-Xjsr305=strict")
 		jvmTarget = "11"
 	}
-//	dependsOn("formatKotlin")
 }
 
 tasks.withType<Test> {
 	useJUnitPlatform()
-//	dependsOn("formatKotlin")
 }

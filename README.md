@@ -16,8 +16,6 @@ Sendo assim, temos as seguintes "camadas" de código:
 
 Antes de desenvolver, fique atento à organização dos pacotes.
 
-Nossa API foi desenvolvida em Kotlin, Spring boot,Todas as nossas aplicações utilizam sleuth, nossas integrações são via Feign, wiremock,
-
 ## Regras báscias para desenvolvimento
 
 - Todas as PRs com precisam de ao menos 2 aprovações;
